@@ -1,0 +1,157 @@
+import promptSync from 'prompt-sync'
+const prompt = promptSync()
+
+let choice
+let pedidos = 0
+let totalFinal = 0
+let pedidosComDesconto = 0
+console.clear()
+while(choice != 0){
+    
+    console.log("1. Novo Pedido")
+    console.log("2. Ver Relatório Parcial")
+    console.log("0. Encerrar Turno")
+    choice = prompt("")
+
+    if(choice == 1){
+        const nomeCliente = prompt('Digite o nome do cliente: ')
+        let valorPao = 0
+        let valorRecheio = 0
+        let valorMolho = 0
+        let pao
+        let recheio
+        let molho
+        let extras = 0
+        let valorExtras = 0
+        let desconto
+        let total 
+
+        for(let i = 1; i <= 3; i++){
+            if(i === 1){
+                console.clear()
+                console.log("Qual é o pão de sua preferência?")
+                console.log("1. Pão Francês: R$1,50")
+                console.log("2. Pão Ciabatta: R$2,50")
+                console.log("3. Pão Integral: R$2,00")
+                pao = prompt('Sua opção: ')
+                if(pao == "1"){
+                    valorPao = 1.50
+                    pao = "Francês"
+                }
+                else if(pao == "2"){
+                    pao = "Ciabatta"
+                    valorPao = 2.50
+                }
+                else{
+                    pao = "Integral"
+                    valorPao = 2.0
+                }
+            }
+            else if(i === 2){
+                console.clear()
+                console.log("Qual é o recheio de sua preferência?")
+                console.log("1. Frango: R$5,00")
+                console.log("2. Carne: R$6,50")
+                console.log("3. Vegetariano: R$4,00")
+                recheio = prompt('Sua opção: ')
+                if(recheio == "1"){
+                    recheio = "Frango"
+                    valorRecheio = 5.0
+                }
+                else if(recheio == "2"){
+                    recheio = "Carne"
+                    valorRecheio = 6.50
+                }
+                else{
+                    recheio = "Vegetariano"
+                    valorRecheio = 4.00
+                }
+            }
+            else if(i === 3){
+                console.clear()
+                console.log("Qual é o molho de sua preferência?")
+                console.log("1. Maionese: R$0,50")
+                console.log("2. Mostarda: R$0,50")
+                console.log("3. Especial: R$1,50")
+                molho = prompt('Sua opção: ')
+                if(molho == "1"){
+                    molho = "Maionese"
+                    valorMolho = 0.50
+                }
+                else if(molho == "2"){
+                    molho = "Mostarda"
+                    valorMolho = 0.50
+                }
+                else{
+                    molho = "Especial"
+                    valorMolho = 1.50
+                }
+            }
+        }
+
+        console.log("Quantos extras irão ter no pedido?")
+        extras = Number(prompt("")) 
+        
+       
+        let subTotal = (valorPao + valorMolho + valorRecheio)
+
+       
+        if(extras >= 2 && subTotal >= 10.00){
+            desconto = subTotal * (15/100)
+            total = subTotal - desconto 
+            pedidosComDesconto = pedidosComDesconto + 1
+            desconto = `R$ ${desconto.toFixed(2)} (15%)` 
+        }
+        else{
+            desconto = "Nenhum desconto foi aplicado"
+            total = subTotal
+        }
+        pedidos = pedidos + 1
+        totalFinal = totalFinal + total
+console.clear()
+        console.log("======================================")
+        console.log("BYTE & BUN")
+        console.log("======================================")
+        console.log(`Cliente : ${nomeCliente}`)
+        console.log("--------------------------------------")
+        console.log(`Pão : ${pao}`)
+        console.log(`Recheio : ${recheio}`)
+        console.log(`Molho : ${molho}`)
+        console.log("--------------------------------------")
+        console.log(`Extras : ${extras}`)
+        console.log("--------------------------------------")
+        console.log(`Desconto : ${desconto}`)
+        console.log("--------------------------------------")
+        console.log(`Total R$ ${total.toFixed(2)}`)
+        console.log("======================================")
+        console.log(" BOM APETITE!!!")
+        console.log("======================================") 
+    }  
+    let media = pedidos > 0 ? totalFinal / pedidos : 0
+
+    if(choice == 2){
+        console.clear()
+        console.clear()
+        console.log("==========================================")
+        console.log("RELATÓRIO PARCIAL")
+        console.log("==========================================")
+        console.log(`Pedidos realizados : ${pedidos}`)
+        console.log(`Faturamento atual : R$ ${totalFinal.toFixed(2)}`)
+        console.log(`Ticket médio : R$ ${media.toFixed(2)}`)
+        console.log("==========================================")
+    }
+    
+    if(choice == 0){
+        console.clear()
+        console.log("==========================================")
+        console.log("RELATÓRIO DO TURNO")
+        console.log("==========================================")
+        console.log(`Pedidos realizados : ${pedidos}`)
+        console.log(`Faturamento bruto : R$ ${totalFinal.toFixed(2)}`)
+        console.log(`Ticket médio : R$ ${media.toFixed(2)}`)
+        console.log(`Pedidos c/ desconto : ${pedidosComDesconto}`)
+        console.log("==========================================")
+        console.log("Turno encerrado. Até logo!")
+        console.log("==========================================")
+    }
+}
