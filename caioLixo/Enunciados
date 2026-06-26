@@ -1,0 +1,78 @@
+
+
+//      atividade 1
+
+// Crie uma variável que recebe nome e uma que recebe idade, a variável de nome não deve mudar em momento nenhum, 
+// já a de idade muda a cada ano.
+
+
+
+//      atividade 2
+
+// Crie uma função que recebe dois números e exibe a multiplicação deles.
+
+
+
+//      atividade 3
+
+// crie uma função em formato Arrow function que recebe um número e exibe a tabuada completa de 1 a 10.
+// 
+
+
+
+//      atividade 4
+
+// Crie uma função que recebe 2 valores e calcule a diferença entre eles, guarde essa diferença .
+// em outra variável e retorne essa variável.
+
+
+
+
+
+//      atividade 5
+
+// Crie uma função que recebe um número e retorna a tabuada inteira de um a dez desse número usando o laço de repetição while.
+
+
+
+//      atividade 6
+
+// Crie uma função que recebe "while" ou "for" e dependendo do que for escolhido ele executa uma das duas funções das atividades 3 e 5
+
+
+
+//      atividade 7
+
+// Crie um array que guarda nomes de alunos, um que guarda a idade de cada um e outro que guarda um hobby seu, depois crie um
+// laço de repetição que exibe cada um dos alunos com suas respectivas idades e hobbys.
+
+
+
+//      atividade 8
+
+// Crie uma função que recebe um número (x) e retorna os x primeiros números de PI.
+
+
+
+//      atividade 9
+
+// Crie uma função que recebe as cores de um resistor de 3 cores e retorna o valor dele em ohms
+
+
+
+//      atividade 10
+
+// Crie uma função que recebe uma cor e retorna a cor contrária dela.
+// 
+
+
+
+//      atividade 11
+
+// Crie uma função que recebe um primeiro termo ("a1"), uma razão ("r" ou "q"), e um termo aleatório ("aN") e retorne uma
+// função aritmética e uma geométrica que calcule o "aN".
+
+
+//      atividade 12
+
+// Crie uma função que recebe dois arrays numéricos e retorna um terceiro array só com os termos que se repetem entre os dois.
