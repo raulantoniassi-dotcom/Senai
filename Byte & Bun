@@ -1,100 +1,117 @@
-let quantidade
-let valorItem
-let faturamentoTotal = 0
-let totalItensVendidos = 0
-let escolha
-let subTotal = 0 // Inicializado com 0
-let faturamentoLiquido
+ import promptSync from 'prompt-sync'
+const prompt = promptSync
+let faturamentoTotal = 0;
+let totalItensVendidos = 0;
+let escolha = -1;
 
 // Função 1
-function gerarDivisor (caracter, tamanho){
-    linha = "" 
-    for (let i = 0 ; i <= tamanho ; i++){
-        linha = linha + caracter
+function gerarDivisor(caracter, tamanho) {
+    let linha = "";
+
+    for (let i = 0; i < tamanho; i++) {
+        linha += caracter;
     }
-   return linha
+
+    return linha;
 }
 
 // Função 2
 function calcularPrecoItem(codigo, quantidade) {
-    switch(codigo){
+    let preco = 0;
+
+    switch (codigo) {
         case 1:
-            item = 25
-            break
-        case 2: 
-            item = 15
-            break
+            preco = 25;
+            break;
+        case 2:
+            preco = 15;
+            break;
         case 3:
-            item = 8
-            break
-        default: // Substituído o case inválido por default
-            item = 0 
-            break
+            preco = 8;
+            break;
+        default:
+            console.log("Código inválido!");
+            return 0;
     }
-    precoItem = item * quantidade
-    return precoItem
+
+    return preco * quantidade;
 }
 
-// Função 3 
-function calcularDesconto(subTotal){
-    if (subTotal >= 60){
-        desconto = subTotal * (10/100)
-    } else {
-        desconto = 0 // Garante que zera se o valor for menor que 60
+// Função 3
+function calcularDesconto(valor) {
+    if (valor >= 60) {
+        return valor * 0.10;
     }
-    return desconto
-} 
+
+    return 0;
+}
 
 // Função 4
 function exibirBoasVindas() {
-    console.log(gerarDivisor("=",39))
-    console.log("--- BEM-VINDO AO GERENTE BYTE & BUN ---")
-    console.log(gerarDivisor("=", 39))
+    console.clear();
+    console.log(gerarDivisor("=", 40));
+    console.log("        BEM-VINDO AO BYTE & BUN");
+    console.log(gerarDivisor("=", 40));
 }
 
 // Função 5
-function registrarPedido(){
-    codigo = Number(prompt("Digite o código do item:\n(1) Hambúrguer\n(2) Batata\n(3) Refrigerante"))
-    quantidade = Number(prompt("Digite a quantidade de itens: "))
-    calcularPrecoItem(codigo, quantidade)
-    valorItem = precoItem
-    return valorItem
+function registrarPedido() {
+    let codigo = Number(prompt(
+        "Digite o código do item:\n" +
+        "1 - Hambúrguer (R$25)\n" +
+        "2 - Batata (R$15)\n" +
+        "3 - Refrigerante (R$8)"
+    ));
+
+    let quantidade = Number(prompt("Digite a quantidade:"));
+
+    let valorItem = calcularPrecoItem(codigo, quantidade);
+
+    return {
+        valorItem,
+        quantidade
+    };
 }
 
 // Função 6
-function menuPrincipal(){
-    while(escolha != 0){
-        exibirBoasVindas()
-        console.log("0. Fechar turno e sair")
-        console.log("1. Registrar item")
-        escolha = prompt("Escolha uma opção:")
-        console.clear()
-        
-        if (escolha == 1) {
-            registrarPedido()
-            subTotal = valorItem
-            
-            if (subTotal > 0) {
-                faturamentoTotal = faturamentoTotal + subTotal
-                totalItensVendidos = totalItensVendidos + quantidade // Soma a quantidade real de itens
+function menuPrincipal() {
+
+    while (escolha !== 0) {
+
+        exibirBoasVindas();
+
+        console.log("0 - Fechar turno");
+        console.log("1 - Registrar item");
+
+        escolha = Number(prompt("Escolha uma opção:"));
+
+        if (escolha === 1) {
+
+            let pedido = registrarPedido();
+
+            if (pedido.valorItem > 0) {
+                faturamentoTotal += pedido.valorItem;
+                totalItensVendidos += pedido.quantidade;
+
+                console.log(`Pedido registrado: R$ ${pedido.valorItem.toFixed(2)}`);
             }
+
+            prompt("Pressione ENTER para continuar...");
         }
     }
 
-    // Fechamento do caixa
-    calcularDesconto(faturamentoTotal)
-    faturamentoLiquido = faturamentoTotal - desconto
+    let desconto = calcularDesconto(faturamentoTotal);
+    let faturamentoLiquido = faturamentoTotal - desconto;
 
-    console.clear()
-    console.log(gerarDivisor("=", 40))
-    console.log("          --- BYTE-BUN ---          ")
-    console.log(gerarDivisor("=", 40))
-    console.log(`Quantidade total de itens vendidos: ${totalItensVendidos}`)
-    console.log(`Faturamento bruto: R$ ${faturamentoTotal.toFixed(2)}`)
-    console.log(`Desconto: R$ ${desconto.toFixed(2)}`)
-    console.log(`Faturamento líquido: R$ ${faturamentoLiquido.toFixed(2)}`)
-    console.log(gerarDivisor("=", 40))
+    console.clear();
+    console.log(gerarDivisor("=", 40));
+    console.log("           FECHAMENTO DO CAIXA");
+    console.log(gerarDivisor("=", 40));
+    console.log(`Itens vendidos: ${totalItensVendidos}`);
+    console.log(`Faturamento bruto: R$ ${faturamentoTotal.toFixed(2)}`);
+    console.log(`Desconto: R$ ${desconto.toFixed(2)}`);
+    console.log(`Faturamento líquido: R$ ${faturamentoLiquido.toFixed(2)}`);
+    console.log(gerarDivisor("=", 40));
 }
 
-menuPrincipal()
-
+menuPrincipal();
