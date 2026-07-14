@@ -1,0 +1,1 @@
+// O uso de const impede a reatribuição da variável, mas não torna o objeto imutável
