@@ -1,0 +1,151 @@
+@import url('https://googleapis.com');
+
+body {
+
+  font-family: 'Lobster', cursive;
+
+  background-color: rgb(241, 234, 218);
+
+  color: #1b2a4a;
+
+  max-width: 700px;
+
+  margin: 40px auto;
+
+  padding: 0 20px;
+
+  line-height: 1.5;
+
+}
+
+
+h1 {
+    font-size: 100px;
+  color: rgb(124, 80, 59);
+
+}
+
+#pedido {
+    font-size: 50px;
+  color: rgb(124, 80, 59);
+
+}
+
+
+section {
+
+  background-color: #ffffff;
+
+  border: 1px solid #d8e6e2;
+
+  border-radius: 8px;
+
+  padding: 16px 20px;
+
+  margin: 20px 0;
+
+}
+
+
+h2 {
+
+  font-size: 30px;
+
+  color: rgb(124, 80, 59);
+
+  margin-top: 0;
+
+}
+
+
+.explicacao {
+
+  color: #5a6b72;
+
+  font-style: italic;
+
+}
+
+
+button {
+font-family: 'Lobster', cursive;
+    
+  background-color: rgb(124, 80, 59);
+
+  color: #ffffff;
+
+  border: none;
+
+  padding: 10px 18px;
+
+  border-radius: 6px;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  margin: 4px 4px 4px 0;
+
+}
+
+
+button:hover {
+
+  background-color: rgb(172, 115, 89);
+
+}
+
+
+input,
+
+select {
+
+  font-size: 15px;
+
+  padding: 6px 8px;
+
+  margin: 4px 8px 4px 0;
+
+  border: 1px solid #d8e6e2;
+
+  border-radius: 4px;
+
+}
+
+
+label {
+
+  display: block;
+
+  margin-bottom: 8px;
+
+}
+
+
+p {
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+}
+
+
+#cupom {
+
+  white-space: pre-line;
+
+}
+
+#imagem {
+
+border-radius: 16px;
+  display: block;
+  margin: 20px auto;
+}
+
+#imagemMolho {
+  border-radius: 16px;
+  display: block;
+  margin: 20px auto;
+}
